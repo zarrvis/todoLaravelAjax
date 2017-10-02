@@ -19,13 +19,9 @@
                     <div class="panel-body">
 
                         <ul class="list-group">
-                            <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">Cras justo odio</li>
-                            <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">Dapibus ac facilisis in</li>
-                            <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">Morbi leo risus</li>
-                            <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">Porta ac consectetur ac</li>
-                            <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">Vestibulum at eros</li>
+                            
                         </ul>
-
+                        <li class="list-group-item ourItem" data-toggle="modal" data-target="#myModal">Vestibulum at eros</li>
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -50,7 +46,7 @@
             </div>
         </div>
     </div>
-
+{{csrf_field()}}
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -81,7 +77,9 @@
 
         $('#addButton').click(function(event){
             var text = $('#addItem').val();
-            console.log(text);
+            $.post('list', {'text': text, '_token' : $('input[name=_token]').val()}, function(data){
+                console.log(data);
+            });
         });
 
     });

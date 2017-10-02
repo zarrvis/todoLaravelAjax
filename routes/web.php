@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/list',function() {
+/*Route::get('/list',function() {
     return view('list');
-});
+});*/
+
+Route::get('list','listController@index');
+Route::post('list','listController@create');
